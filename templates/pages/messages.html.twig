@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'homepage' %}
+
+{#
+    the homepage is a special page which displays neither a header nor a footer.
+    this is done with the 'trick' of defining empty Twig blocks without any content
+#}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p style="margin-top: 20px">Все сообщения пользователя {{ email }}</p>
+        {% if feedbackList is not empty %}
+            <table border="1">
+                <thead>
+                <th>Дата</th>
+                <th>Имя</th>
+                <th>Сообщение</th>
+                </thead>
+                {% for list in feedbackList %}
+                    <tr>
+                        <td>{{ list.date }}</td>
+                        <td>{{ list.name }}</td>
+                        <td>{{ list.message }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

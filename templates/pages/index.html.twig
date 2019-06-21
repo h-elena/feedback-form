@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'homepage' %}
+
+{#
+    the homepage is a special page which displays neither a header nor a footer.
+    this is done with the 'trick' of defining empty Twig blocks without any content
+#}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p style="margin-top: 20px">Форма обратной связи</p>
+        {% form_theme form 'form/form_row.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_widget(form, {attr: {class: 'form-horizontal'} }) }}
+        {{ form_end(form) }}
+
+        <script>
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext("2d");
+            ctx.font = "normal 20px Arial";
+            ctx.strokeStyle = "#0069D9";
+            ctx.shadowColor = "#0069D9";
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 5;
+            ctx.shadowBlur = 5;
+            ctx.strokeText("{{ capchaText }}", 0, 20);
+            ctx.restore();
+        </script>
+    </div>
+{% endblock %}

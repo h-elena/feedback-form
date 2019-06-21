@@ -1,0 +1,10 @@
+{% use 'bootstrap_4_horizontal_layout.html.twig' with form_label as base_form_label %}
+
+{% block form_label %}
+    <label class="col-sm-3 col-form-label{% if required %} required{% endif %}"
+           for="{{ id }}">{{ label|trans }}{% if required and id != 'form_capcha' %}<span class="required"
+                                                                                          title="This field is required">*</span>{% endif %}
+        {% if id == 'form_capcha' %}
+            <canvas id="canvas" width="150" height="30"></canvas>{% endif %}
+    </label>
+{% endblock %}

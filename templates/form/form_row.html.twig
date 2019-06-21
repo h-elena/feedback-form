@@ -1,0 +1,10 @@
+{% use 'form/form_label.html.twig' %}
+{% block form_row %}
+    <div class="form-group row">
+        {{ form_label(form) }}
+        <div class="col-sm-9">
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+        </div>
+    </div>
+{% endblock form_row %}
